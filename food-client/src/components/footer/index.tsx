@@ -1,23 +1,6 @@
 "use client";
 import React from "react";
-import { Button, Typography, Container, Box } from "@mui/material";
-import { Color } from "@mui/material";
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary">
-      {"© "}
-      {new Date().getFullYear()}
-      {"Pinecone Foods LLC"}
-      {"."}
-
-      <Typography variant="body2">
-        {"Зохиогчийн эрхээр хамгаалагдав"}
-        {"."}
-      </Typography>
-    </Typography>
-  );
-}
-
+import { Button, Typography, Container, Box, colors,Link } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -27,6 +10,9 @@ const Footer = () => {
         py: 3,
         px: 2,
         bgcolor: "#18BA51",
+        position:"fixed",
+        width:"100%",
+        bottom:"0",
       }}
     >
       <Container
@@ -35,10 +21,10 @@ const Footer = () => {
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          rowGap: 20,
+          gap: "36px"
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <Box style={{ display: "flex", alignItems: "center",}}>
           <svg
             width="33"
             height="20"
@@ -55,16 +41,21 @@ const Footer = () => {
               fill="white"
             />
           </svg>
-          <Typography variant="body1">Food Delivery</Typography>
-        </div>
-        <div style={{}}>
-          <Button color="primary">Нүүр</Button>
-          <Button>Холбоо барих</Button>
-          <Button>Хоолны цэс</Button>
-          <Button>Үйлчилгээний нөхцөл</Button>
-          <Button>Хүргэлтийн бүс</Button>
-          <Button>Нууцлалын бодлого</Button>
-        </div>
+          <Typography variant="body1" color="primary">Food Delivery</Typography>
+        </Box>
+        <Box sx={{
+          borderBottom : 1,
+          borderColor:"white",
+        }}>
+        <Box sx={{display:"flex", justifyContent:"space-evenly",gap:"24px"}}>
+          <Link>Нүүр</Link>
+          <Link>Холбоо барих</Link>
+          <Link>Хоолны цэс</Link>
+          <Link>Үйлчилгээний нөхцөл</Link>
+          <Link>Хүргэлтийн бүс</Link>
+          <Link>Нууцлалын бодлого</Link>
+        </Box>
+        <Box sx={{display: "flex",justifyContent: "center"}}>
         <svg
           width="162"
           height="56"
@@ -85,17 +76,12 @@ const Footer = () => {
             fill="white"
           />
         </svg>
-        <svg
-          width="1300"
-          height="1"
-          viewBox="0 0 1300 1"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line y1="0.5" x2="1300" y2="0.5" stroke="white" />
-        </svg>
-
-        <Copyright />
+        </Box>
+        </Box>
+        <div>
+          <Box sx={{color:"#ffffff"}}>© 2024 Pinecone Foods LLC </Box>
+          <Box sx={{color:"#ffffff"}}>Зохиогчийн эрх хуулиар хамгаалагдсан.</Box>
+        </div>
       </Container>
     </Box>
   );

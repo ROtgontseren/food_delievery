@@ -1,14 +1,14 @@
-import {Grid, Button, Typography, collapseClasses} from "@mui/material";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import { sizing } from '@mui/system';
+import {Grid, Button, Typography, collapseClasses,} from "@mui/material";
+import ItemCard from "../components/card";
+import Delievery from "@/components/delievery";
+
 
 export default function Home() {
 
   return (
-    <main style={{display:"flex", flexDirection:"column", width:"2200px" ,height:"1025px", justifyContent:"space-between" }}>
-          <Header/>
-          <Footer/>
+    <main style={{display:"flex", justifyContent:"center" , alignItems:"center",height:"full" }}>
+        <ItemCard/>
+        <Delievery/>
     </main>
   )
 }
