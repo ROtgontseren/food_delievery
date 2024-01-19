@@ -34,13 +34,26 @@ export default function Delievery() {
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Box>
-            <img src="book.png"/>
+            <img src="time.png"/>
         </Box>
         <Typography variant="h5" component="div">
-          Хүргэлтийн төлөв хянах
+        Шуурхай хүргэлт
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Захиалга бэлтгэл явцыг хянах
+        Захиалга бэлтгэлийн явцыг хянах
+        </Typography>
+      </CardContent>
+    </Card>
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Box>
+            <img src="plate.png"/>
+        </Box>
+        <Typography variant="h5" component="div">
+        Эрүүл, баталгаат орц
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        Захиалга бэлтгэлийн явцыг хянах
         </Typography>
       </CardContent>
     </Card>
@@ -50,23 +63,10 @@ export default function Delievery() {
             <img src="book.png"/>
         </Box>
         <Typography variant="h5" component="div">
-          Хүргэлтийн төлөв хянах
+        Хоолны өргөн сонголт
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Захиалга бэлтгэл явцыг хянах
-        </Typography>
-      </CardContent>
-    </Card>
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Box>
-            <img src="book.png"/>
-        </Box>
-        <Typography variant="h5" component="div">
-          Хүргэлтийн төлөв хянах
-        </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Захиалга бэлтгэл явцыг хянах
+           Захиалга бэлтгэлийн явцыг хянах
         </Typography>
       </CardContent>
     </Card>

@@ -4,5 +4,8 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
   }
 }

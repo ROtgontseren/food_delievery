@@ -1,0 +1,21 @@
+@import './mixin';
+@import './variables';
+
+
+
+.wrapper {
+    background: violet;
+    h1 {color: white;}
+    &-top {
+       @include background-Color(aqua);
+       h1{
+        color: $primary-color;
+       }
+    }
+    &-bottom {
+        @include background-Color(orange);
+        h1 {
+            color : $secondary-color
+        }
+    }
+}
