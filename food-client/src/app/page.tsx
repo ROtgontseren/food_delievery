@@ -8,10 +8,10 @@ export default function Home() {
 
   return (
     <main style={{display:"flex", justifyContent:"center" , alignItems:"center",height:"full" }}>
-        {/* <ItemCard/>
-        <Delievery/> */}
-        {/* <Basket/> */}
-        <Grid>
+        {/* <ItemCard/> */}
+        <Delievery/>
+         {/* <Basket/> */}
+        {/* <Grid>
           <Grid item xs={12}>
              <div className="wrapper">
                <div className="wrapper-top">
@@ -22,7 +22,7 @@ export default function Home() {
                </div> 
              </div>
           </Grid>
-        </Grid>
+        </Grid> */}
     </main>
   )
 }
