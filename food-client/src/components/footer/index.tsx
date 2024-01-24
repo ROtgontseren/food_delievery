@@ -10,7 +10,6 @@ const Footer = () => {
         py: 3,
         px: 2,
         bgcolor: "#18BA51",
-        position:"fixed",
         width:"100%",
         bottom:"0",
       }}
