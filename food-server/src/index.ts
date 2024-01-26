@@ -22,7 +22,11 @@ import express, { Application } from "express";
 import color from "colors";
 import { connectDB } from "./config/db";
 import authRouter from "./router/authRouter";
-import "dotenv/config";
+import userRouter from "./router/userRouter";
+// import "dotenv/config";
+import dotenv from "dotenv";
+import verifyRouter from "./router/verifyRouter";
+dotenv.config();
 
 const app: Application = express();
 const PORT = process.env.PORT;
@@ -32,5 +36,7 @@ connectDB(MONGO_URI);
 
 app.use(express.json());
 app.use("/auth", authRouter);
+app.use("/",userRouter);
+app.use("/verify",verifyRouter)
 
 app.listen(PORT, ()=> console.log(color.rainbow("server aslaa")));
