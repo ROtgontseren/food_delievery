@@ -23,6 +23,7 @@ import color from "colors";
 import { connectDB } from "./config/db";
 import authRouter from "./router/authRouter";
 import userRouter from "./router/userRouter";
+import cors from "cors";
 // import "dotenv/config";
 import dotenv from "dotenv";
 import verifyRouter from "./router/verifyRouter";
@@ -34,6 +35,7 @@ const MONGO_URI = process.env.MONGO_URI as string;
 
 connectDB(MONGO_URI);
 
+app.use(cors());
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/",userRouter);

@@ -33,12 +33,16 @@ const userSchema = new Schema({
     createdAt : {
         type: Date,
         default: Date.now,
+    },
+    otp: {
+        type: String,
+        default: "",
     }
 });
 userSchema.pre('save',async function (){
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(this.password,salt);
-        this.password = hashedPassword;
+        // const salt = await bcrypt.genSalt(10);
+        // const hashedPassword = await bcrypt.hash(this.password,salt);
+        // this.password = hashedPassword;
 });
 
 userSchema.methods.checkPassword = async function (password: string) {

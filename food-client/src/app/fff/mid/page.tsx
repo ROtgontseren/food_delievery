@@ -1,11 +1,11 @@
 // import React from 'react'
-// import Three from "@/components/pages/forget/three"
+// import Repassword from "@/components/pages/forget/second"
 // import { Stack } from '@mui/material';
 
 // const Page = () => {
 //   return (
 //     <Stack>
-//        <Three/>
+//        <Repassword/>
 //     </Stack>
 //   )
 // }

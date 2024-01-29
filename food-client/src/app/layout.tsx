@@ -1,6 +1,7 @@
 import {ThemeProvider} from './theme'
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import { ToastContainer } from "react-toastify";
 
 import './scss/globals.scss'
 
@@ -17,6 +18,7 @@ export default function RootLayout({
          <Header/>
          {children}
          <Footer/>
+        {/* <ToastContainer /> */}
       </ThemeProvider>
       </body>
     </html>

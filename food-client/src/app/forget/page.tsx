@@ -1,13 +1,8 @@
-import React from 'react'
-import Repassword from "@/components/pages/forget/first"
-import { Stack } from '@mui/material';
+import React from "react";
+import MyStepper from "@/components/pages/forget-pass";
 
 const Page = () => {
-  return (
-    <Stack>
-       <Repassword/>
-    </Stack>
-  )
-}
+  return <MyStepper />;
+};
 
 export default Page;
