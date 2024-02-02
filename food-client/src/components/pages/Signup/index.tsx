@@ -16,7 +16,7 @@ const validationSchema = yup.object({
   .max(100, "Имэйл хаяг 100 тэмдэгтээс хэтрэхгүй байна")
   .required("Имэйл хаягыг заавал бөглөнө үү")
   .email("")
-  .matches(/^w+[+.w-]*@([w-]+.)*w+[w-]*.([a-z]{2,4}|d+)$/i),
+  .matches(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@gmail[A-Za-z0-9.-]+$/),
   address: yup.string()
   .required("заавал хаягаа оруулна уу"),
   password: yup.string()

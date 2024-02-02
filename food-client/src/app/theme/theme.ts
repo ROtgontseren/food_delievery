@@ -24,8 +24,8 @@ export const theme = createTheme({
         primary:{
           main: "#ffffff"
         },
-        error : {
-          main: "#C0392B"
+        success:{
+          main: "#18ba51"
         }
     }
 });

@@ -31,9 +31,18 @@ export const UserProvider = ({children}:PropsWithChildren ) => {
       address: "",
       password: "",
     });
+    const [loginData,setLoginData] = useState({
+      email: "",
+      password: "",
+    })
+
+    const login = async () => {
+
+    }
     return (
     <UserContext.Provider value={{user ,login: () => {}}}>
          {children}   
     </UserContext.Provider>
     )
 }
+

@@ -18,7 +18,7 @@ export const Button = ({
     <Stack>
       <MuiButton
         onClick={onClick}
-        color="error"
+        color="success"
         variant={btnType}
         sx={{
           p: 4,

@@ -27,6 +27,8 @@ import cors from "cors";
 // import "dotenv/config";
 import dotenv from "dotenv";
 import verifyRouter from "./router/verifyRouter";
+import categoryRouter from "./router/categoryRouter";
+import errorHandler from "./middleware/errorHandler";
 dotenv.config();
 
 const app: Application = express();
@@ -39,6 +41,8 @@ app.use(cors());
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/",userRouter);
-app.use("/verify",verifyRouter)
+app.use("/verify",verifyRouter);
+app.use("/categories",categoryRouter)
+app.use(errorHandler)
 
 app.listen(PORT, ()=> console.log(color.rainbow("server aslaa")));

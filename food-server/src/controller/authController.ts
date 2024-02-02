@@ -1,9 +1,10 @@
-import { Request,Response } from "express"
+import { NextFunction, Request,Response } from "express"
 import User from "../model/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import MyError from "../utils/myError";
 
-export const signup = async (req: Request , res: Response) => {
+export const signup = async (req: Request , res: Response , next : NextFunction) => {
     // user model
     try {
         const newUser =req.body;
@@ -12,25 +13,28 @@ export const signup = async (req: Request , res: Response) => {
         console.log("email",req.body.ea)
     } catch (error)
     {
-        res.status(400).json({message : "Шинэ хэрэглэгч бүртгэх үед алдаа үүслээ",error});
+        next(error)
+        // res.status(400).json({message : "Шинэ хэрэглэгч бүртгэх үед алдаа үүслээ",error});
     }
 };
-export const login = async (req: Request , res: Response) => {
+export const login = async (req: Request , res: Response , next: NextFunction) => {
     // user model
     try {
         const {email,password} = req.body;
         const user = await User.findOne({email}).select("+password");
         console.log("user", user)
         if(!user){
-            return res.status(400)
-            .json({message : `${email}-хэрэглэгч бүртгэлгүй байна`})
+            throw new MyError(`${email}-хэрэглэгч бүртгэлгүй байна`,403)
+            // return res.status(400)
+            // .json({message : `${email}-хэрэглэгч бүртгэлгүй байна`})
         }
 
         const isValid = await bcrypt.compare(password, user.password);
        
         if(!isValid){
-            return res.status(400)
-            .json({message : `И мэйл эсвэл нууц үг буруу байна`})
+            throw new MyError(`${email} И мэйл эсвэл нууц үг буруу байна`,401)
+            // return res.status(400)
+            // .json({message : `И мэйл эсвэл нууц үг буруу байна`})
         }
         
         const token = jwt.sign({
@@ -40,7 +44,7 @@ export const login = async (req: Request , res: Response) => {
         res.status(201).json({message : "хэрэглэгч амжилттай нэвтэрлээ",token});
     } catch (error)
     {
-        res.status(400).json({message : "Шинэ хэрэглэгч бүртгэх үед алдаа үүслээ",error});
+        next(error)
     }
 };
 
