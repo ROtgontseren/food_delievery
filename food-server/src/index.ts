@@ -28,6 +28,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import verifyRouter from "./router/verifyRouter";
 import categoryRouter from "./router/categoryRouter";
+import foodRouter from "./router/foodRouter";
+import uploadRouter from "./router/uploadRouter";
 import errorHandler from "./middleware/errorHandler";
 dotenv.config();
 
@@ -42,7 +44,10 @@ app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/",userRouter);
 app.use("/verify",verifyRouter);
-app.use("/categories",categoryRouter)
+app.use("/categories",categoryRouter);
+app.use("/foods",foodRouter);
+app.use("/upload",uploadRouter);
 app.use(errorHandler)
 
 app.listen(PORT, ()=> console.log(color.rainbow("server aslaa")));
+

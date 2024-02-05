@@ -39,7 +39,10 @@ const userSchema = new Schema({
         default: "",
     }
 });
-userSchema.pre('save',async function (){
+userSchema.pre('save',async function async(){
+        // if(this.isModified("password")){
+        //     const salt
+        // }
         // const salt = await bcrypt.genSalt(10);
         // const hashedPassword = await bcrypt.hash(this.password,salt);
         // this.password = hashedPassword;
