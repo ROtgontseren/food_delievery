@@ -1,6 +1,7 @@
 "use client"
 import {PropsWithChildren, createContext,useState} from "react";
-
+import axios from "axios";
+import {redirect} from "next/navigation";
 interface IUser {
         name : string;
         email: string;
@@ -10,7 +11,7 @@ interface IUser {
 }
 interface IUserContext {
     user: IUser;
-    login: () => void;    
+    login: ()=> void;  
 }
 
 
@@ -21,7 +22,7 @@ export const UserContext = createContext<IUserContext>({
       address: "",
       password: "",
     },
-    login: function ():void{},
+    login: () => void
 });
 
 export const UserProvider = ({children}:PropsWithChildren ) => {
@@ -34,15 +35,25 @@ export const UserProvider = ({children}:PropsWithChildren ) => {
     const [loginData,setLoginData] = useState({
       email: "",
       password: "",
-    })
+    });
+    
 
     const login = async () => {
+      try {
+        const data = axios.post("http://localhost:8080/auth/login", {
+          email: loginData.email,
+          password: loginData.password,
+        });
+        console.log("LOGIN SUCCESS!!!");
+        redirect("/");
+      } catch (error) {
+        console.log("ERROR IN LOGIN FUNCTION");
+      }
+    };
 
-    }
     return (
-    <UserContext.Provider value={{user ,login: () => {}}}>
+    <UserContext.Provider value={{user,login}}>
          {children}   
     </UserContext.Provider>
     )
-}
-
+    }
