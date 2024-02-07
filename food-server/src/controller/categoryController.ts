@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import Category from "../model/category";
 import MyError from "../utils/myError";
+import { IReq } from "../utils/interface";
 
 export const createCategory = async (req: Request ,res: Response , next: NextFunction) => {
      try {
@@ -23,7 +24,7 @@ export const getCategory = async (req: Request ,res: Response, next: NextFunctio
         next(error) 
     }
 };
-export const getAllCategory = async (req: Request ,res: Response, next: NextFunction) => {
+export const getAllCategory = async (req: IReq ,res: Response, next: NextFunction) => {
     try {
         const allCategories =  await Category.find();
       if(!allCategories){

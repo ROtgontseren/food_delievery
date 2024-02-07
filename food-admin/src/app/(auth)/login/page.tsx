@@ -28,6 +28,8 @@ export default function LoginView() {
 
   const router = useRouter();
 
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
@@ -37,7 +39,7 @@ export default function LoginView() {
   const renderForm = (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField name="email" label="Email address"/>
 
         <TextField
           name="password"

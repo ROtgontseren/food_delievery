@@ -22,7 +22,7 @@ export const UserContext = createContext<IUserContext>({
       address: "",
       password: "",
     },
-    login: () => void
+    login: () => void{}
 });
 
 export const UserProvider = ({children}:PropsWithChildren ) => {
