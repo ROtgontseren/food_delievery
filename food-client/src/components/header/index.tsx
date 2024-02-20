@@ -71,7 +71,7 @@ const Header = () => {
 
         <Link href={"./"}><Button variant="text" color="secondary">Нүүр</Button></Link>
 
-        <Button variant="text" color="secondary">Хоолны цэс</Button>
+        <Link href={"./menu"}><Button variant="text" color="secondary">Хоолны цэс</Button></Link>
 
         <Button variant="text" color="secondary">Хүргэлтийн бүс</Button>
       </div>

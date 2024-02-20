@@ -17,7 +17,7 @@ const bull = (
 
 export default function Delievery() {
   return (
-   <Box sx={{display:"flex", gap:"24px", marginTop:"12px"}}>
+   <Box sx={{display:"flex", gap:"60px", marginTop:"60px",marginBottom: "60px",justifyContent: "center", alignItems: "center"}}>
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Box>

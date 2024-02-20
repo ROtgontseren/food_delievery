@@ -10,18 +10,19 @@ import Typography from '@mui/material/Typography';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
+import { Button } from '@mui/material';
 
 export default function Basket() {
   const theme = useTheme();
 
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card sx={{ display: 'flex', justifyContent:"center"}}>
         <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{ width: 180 }}
         image="pizza.png"
       />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', paddingY:"20px" }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5" sx={{fontWeight: "bold"}}>
             Main Pizza
@@ -40,17 +41,11 @@ export default function Basket() {
           </Typography>
 
         </CardContent>
-        {/* <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="previous">
-            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-          </IconButton>
-          <IconButton aria-label="play/pause">
-            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-          </IconButton>
-          <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-          </IconButton>
-        </Box> */}
+        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1,justifyContent:"space-evenly" ,paddingX:"12px" }}>
+             <Button variant="contained" color="success" sx={{color:"white" ,fontSize: "16px" , fontWeight: "bold"}}>-</Button>
+             <Typography sx={{fontSize:"16px", fontWeight:"bold"}}>1</Typography>
+             <Button variant="contained" color="success" sx={{color:"white" ,fontSize: "16px" , fontWeight: "bold"}}>+</Button>
+        </Box>
       </Box>
     </Card>
   );
