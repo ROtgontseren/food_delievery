@@ -6,7 +6,8 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
-
+import {Button} from "@mui/material";
+import Iconify from "@/components/iconify"
 import FoodCard from "./food-card";
 import FoodSort from "./food-sort";
 // import ProductFilters from "./product-filters";
@@ -40,7 +41,6 @@ const FOOD_COLOR = [
 ];
 
 // ----------------------------------------------------------------------
-
 export const products = [...Array(FOOD_NAME.length)].map((_, index) => {
   const setIndex = index + 1;
 
@@ -65,8 +65,12 @@ export const products = [...Array(FOOD_NAME.length)].map((_, index) => {
 // ----------------------------------------------------------------------
 
 export default function FoodView() {
+  const [open, setOpen] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const handleOpenFilter = () => {
     setOpenFilter(true);
   };
@@ -80,6 +84,14 @@ export default function FoodView() {
       <Typography variant="h4" sx={{ mb: 5 }}>
         Хоолны жагсаалт
       </Typography>
+      <Button
+          variant="contained"
+          color="inherit"
+          startIcon={<Iconify icon="eva:plus-fill" />}
+          onClick={handleOpen}
+        >
+          Шинэ ангилал
+        </Button>
 
       <Stack
         direction="row"
@@ -94,7 +106,7 @@ export default function FoodView() {
             onOpenFilter={handleOpenFilter}
             onCloseFilter={handleCloseFilter}
           /> */}
-
+             hi
           <FoodSort />
         </Stack>
       </Stack>

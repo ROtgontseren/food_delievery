@@ -15,9 +15,11 @@ import CategorySearch from "./category-search";
 // ----------------------------------------------------------------------
 import { faker } from "@faker-js/faker";
 import CategoryModal from "@/categoryModal";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 
 import axios, { AxiosError } from "axios";
+import { CategoryContext } from "@/context/categoryContext";
+import Menucard from "@/components/menucard";
 
 // ----------------------------------------------------------------------
 
@@ -153,6 +155,7 @@ export default function CategoryView() {
         handleFileChange={handleFileChange}
         handleSave={createCategory}
       />
+      <Menucard/>
     </Container>
   );
 }
