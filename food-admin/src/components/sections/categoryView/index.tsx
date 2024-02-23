@@ -19,8 +19,6 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 
 import axios, { AxiosError } from "axios";
 import { CategoryContext } from "@/context/categoryContext";
-import Menucard from "@/components/menucard";
-
 // ----------------------------------------------------------------------
 
 const CATEGORY_TITLES = [
@@ -45,63 +43,66 @@ const CATEGORY_TITLES = [
 
 export default function CategoryView() {
   const [open, setOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [file, setFile] = useState<File | null>(null);
+  // const [categories, setCategories] = useState([]);
+  // const [file, setFile] = useState<File | null>(null);
 
-  const [newCategory, setNewCategory] = useState({
-    name: "",
-    description: "",
-  });
+  // const [newCategory, setNewCategory] = useState({
+  //   name: "",
+  //   description: "",
+  // });
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFile(e.currentTarget.files![0]);
-  };
+  // const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setFile(e.currentTarget.files![0]);
+  // };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
 
-    setNewCategory({ ...newCategory, [name]: value });
-  };
+  //   setNewCategory({ ...newCategory, [name]: value });
+  // };
 
+
+  // const createCategory = async () => {
+  //   try {
+  //     const formData = new FormData();
+  //     formData.set("image", file!);
+  //     formData.set("name", newCategory.name);
+  //     formData.set("description", newCategory.description);
+
+  //     const {
+  //       data: { category },
+  //     } = (await axios.post("http://localhost:8080/categories", formData)) as {
+  //       data: { category: object };
+  //     };
+
+  //     // setCategories(categories);
+  //     console.log("Success Add Category");
+  //   } catch (error: any) {
+  //     alert("Add Error - " + error.message);
+  //   }
+  // };
+
+  // const getCategory = async () => {
+  //   try {
+  //     const {
+  //       data: { categories },
+  //     } = (await axios.get("http://localhost:8080/categories")) as {
+  //       data: { categories: [] };
+  //     };
+
+  //     setCategories(categories);
+  //   } catch (error: any) {
+  //     alert("Get Error - " + error.message);
+  //   }
+  // };
+  const {getCategory,
+         categories,
+            } = useContext(CategoryContext)
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(() => false);
-  };
-
-  const createCategory = async () => {
-    try {
-      const formData = new FormData();
-      formData.set("image", file!);
-      formData.set("name", newCategory.name);
-      formData.set("description", newCategory.description);
-
-      const {
-        data: { category },
-      } = (await axios.post("http://localhost:8080/categories", formData)) as {
-        data: { category: object };
-      };
-
-      // setCategories(categories);
-      console.log("Success Add Category");
-    } catch (error: any) {
-      alert("Add Error - " + error.message);
-    }
-  };
-
-  const getCategory = async () => {
-    try {
-      const {
-        data: { categories },
-      } = (await axios.get("http://localhost:8080/categories")) as {
-        data: { categories: [] };
-      };
-
-      setCategories(categories);
-    } catch (error: any) {
-      alert("Get Error - " + error.message);
-    }
   };
 
   useEffect(() => {
@@ -150,12 +151,10 @@ export default function CategoryView() {
       <CategoryModal
         open={open}
         handleClose={handleClose}
-        newCategory={newCategory}
-        handleChange={handleChange}
-        handleFileChange={handleFileChange}
-        handleSave={createCategory}
+        // handleChange={handleChange}
+        // handleFileChange={handleFileChange}
+        // handleSave={createCategory}
       />
-      <Menucard/>
     </Container>
   );
 }

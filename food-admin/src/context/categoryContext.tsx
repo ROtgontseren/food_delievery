@@ -1,10 +1,14 @@
 "use client"
-import React, { PropsWithChildren, createContext, useState } from 'react';
+import React, { PropsWithChildren, createContext, useState,useEffect } from 'react';
 import axios from 'axios';
 
+// interface ICategory {
+//     name: string;
+//     _id: string;
+//   }
 interface IcreateCategoryContext {
-    allCategory: any
-    getCategories : () => void
+    categories: any;
+    getCategory : () => void;
 }
 
 
@@ -12,17 +16,20 @@ export const CategoryContext = createContext({} as IcreateCategoryContext)
 
 
 const CategoryProvider = ({children}: PropsWithChildren) => {
-    const [allCategory,setAllcategory]=useState();
-
-const getCategories = () => {
-    try {
-        const data = axios.get("http://localhost:8080/categories")
-    } catch (error) {
-        console.log("categories not found")
-    }
-}    
+    const [categories, setCategories] = useState([]);
+ 
+    const getCategory = async () => {
+        try {
+          const data = await axios.get("http://localhost:8080/categories")
+          console.log("RES", categories);
+          setCategories(categories);
+        } catch (error: any) {
+          alert("Error" + error.message);
+        }
+      };
+  
   return (
-    <CategoryContext.Provider value={{getCategories,allCategory}}>
+    <CategoryContext.Provider value={{getCategory,categories}}>
          {children}   
     </CategoryContext.Provider>
   )
