@@ -13,6 +13,8 @@ import { Remove, Add, Close } from "@mui/icons-material";
 import {Button} from "../components/core/button";
 import {Input} from "../components/core/input";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { CategoryContext } from "@/context/categoryContext";
+import { useContext } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -42,11 +44,10 @@ const VisuallyHiddenInput = styled("input")({
 export default function CategoryModal({
   handleClose,
   open,
-  newCategory,
-  handleChange,
-  handleFileChange,
   handleSave,
 }: any) {
+  const {createCategory,handleChange,handleFileChange
+       } = useContext(CategoryContext)
   return (
     <Box>
       <Modal
@@ -76,7 +77,7 @@ export default function CategoryModal({
             desc="Write food Description"
             onChange={handleChange}
           />
-          <MuiButton
+          <MuiButton sx={{marginBottom: "20px"}}
             component="label"
             variant="contained"
             startIcon={<CloudUploadIcon />}
@@ -84,7 +85,7 @@ export default function CategoryModal({
             Upload file
             <VisuallyHiddenInput type="file" onChange={handleFileChange} />
           </MuiButton>
-          <Button label="нэмэх" onClick={handleSave}></Button>
+          <Button label="нэмэх" onClick={()=> {createCategory(), handleClose()}}></Button>
         </Box>
       </Modal>
     </Box>

@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Box} from "@mui/material"
+import { createContext } from 'vm';
 
-const foodcontext = () => {
+interface IFoodContext{
+  
+}
+
+export const foodContext = createContext({} as IFoodContext)
+
+const FoodProvider = () => {
   return (
     <div>foodcontext</div>
   )
 }
 
-export default foodcontext
+export default FoodProvider;

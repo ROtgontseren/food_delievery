@@ -2,12 +2,18 @@ import { NextFunction, Request, Response } from "express"
 import Category from "../model/category";
 import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
+import cloudinary from "../utils/cloudinary";
 
 export const createCategory = async (req: Request ,res: Response , next: NextFunction) => {
      try {
-       const newCategory = req.body;
-       await Category.create({...req.body});
+       const newCategory = {...req.body};
+       if (req.file) {
+        const { secure_url } = await cloudinary.uploader.upload(req.file.path);
+        newCategory.image = secure_url;
+      }
+       await Category.create(newCategory);
        res.status(201).json({message : "category amjilttai uuslee"})
+       console.log("new category", newCategory)
      } catch (error) {
         next(error)
      }
@@ -63,3 +69,8 @@ export const deleteCategory = async (req: Request ,res: Response, next: NextFunc
         next(error) 
     }
 };
+
+// if(req.file){
+//   const {secure_url } = await cloudinary.uploader.upload(req.file.path)
+//   newCategory.image = secure_url;
+// }
