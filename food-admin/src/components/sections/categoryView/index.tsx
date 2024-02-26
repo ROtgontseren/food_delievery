@@ -14,87 +14,15 @@ import CategorySearch from "./category-search";
 
 // ----------------------------------------------------------------------
 import { faker } from "@faker-js/faker";
-import CategoryModal from "@/categoryModal";
+import CategoryModal from "@/components/categoryModal";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 
 import axios, { AxiosError } from "axios";
 import { CategoryContext } from "@/context/categoryContext";
-// ----------------------------------------------------------------------
-
-const CATEGORY_TITLES = [
-  "Whiteboard Templates",
-  "Tesla Cybertruck-inspired",
-  "Designify Agency",
-  "✨What is Done is Done ✨",
-  "Fresh Prince",
-  "Six Socks Studio",
-  "vincenzo de cotiis",
-];
-// const categories = [...Array(CATEGORY_TITLES.length)].map(
-//   (_, index) => ({
-//     id: faker.string.uuid(),
-//     cover: `/assets/images/covers/cover_${index + 1}.jpg`,
-//     title: CATEGORY_TITLES[index + 1],
-//     createdAt: faker.date.past(),
-//   })
-// );
-
-// ----------------------------------------------------------------------
 
 export default function CategoryView() {
   const [open, setOpen] = useState(false);
-  // const [categories, setCategories] = useState([]);
-  // const [file, setFile] = useState<File | null>(null);
 
-  // const [newCategory, setNewCategory] = useState({
-  //   name: "",
-  //   description: "",
-  // });
-
-  // const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setFile(e.currentTarget.files![0]);
-  // };
-
-  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-
-  //   setNewCategory({ ...newCategory, [name]: value });
-  // };
-
-
-  // const createCategory = async () => {
-  //   try {
-  //     const formData = new FormData();
-  //     formData.set("image", file!);
-  //     formData.set("name", newCategory.name);
-  //     formData.set("description", newCategory.description);
-
-  //     const {
-  //       data: { category },
-  //     } = (await axios.post("http://localhost:8080/categories", formData)) as {
-  //       data: { category: object };
-  //     };
-
-  //     // setCategories(categories);
-  //     console.log("Success Add Category");
-  //   } catch (error: any) {
-  //     alert("Add Error - " + error.message);
-  //   }
-  // };
-
-  // const getCategory = async () => {
-  //   try {
-  //     const {
-  //       data: { categories },
-  //     } = (await axios.get("http://localhost:8080/categories")) as {
-  //       data: { categories: [] };
-  //     };
-
-  //     setCategories(categories);
-  //   } catch (error: any) {
-  //     alert("Get Error - " + error.message);
-  //   }
-  // };
   const {getCategory,
          categories,
             } = useContext(CategoryContext)

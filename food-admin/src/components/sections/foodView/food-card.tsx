@@ -1,21 +1,36 @@
+"use client"
+import { useContext, useState } from "react";
+import { foodContext } from "@/context/foodProvider";
 import Box from "@mui/material/Box";
+import Popover from "@mui/material/Popover";
 import Link from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import MenuItem from "@mui/material/MenuItem";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 
 import { fCurrency } from "@/utils/format-number";
 
 import Label from "@/components/label";
-import { ColorPreview } from "@/components/color-utils";
 
 // ----------------------------------------------------------------------
 
-export default function FoodCard({ product }: any) {
+export default function FoodCard({ food }: any) {
+  const { deleteFood } = useContext(foodContext);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const renderStatus = (
     <Label
       variant="filled"
-      color={(product.status === "sale" && "error") || "info"}
+      color={(food.status === "sale" && "error") || "info"}
       sx={{
         zIndex: 9,
         top: 16,
@@ -24,15 +39,15 @@ export default function FoodCard({ product }: any) {
         textTransform: "uppercase",
       }}
     >
-      {product.status}
+      {food.status}
     </Label>
   );
 
   const renderImg = (
     <Box
       component="img"
-      alt={product.name}
-      src={product.cover}
+      alt={food.name}
+      src={food.image}
       sx={{
         top: 0,
         width: 1,
@@ -53,10 +68,10 @@ export default function FoodCard({ product }: any) {
           textDecoration: "line-through",
         }}
       >
-        {product.priceSale && fCurrency(product.priceSale)}
+        {food.priceSale && fCurrency(food.priceSale)}
       </Typography>
       &nbsp;
-      {fCurrency(product.price)}
+      {fCurrency(food.price)}
     </Typography>
   );
 
@@ -69,14 +84,14 @@ export default function FoodCard({ product }: any) {
       }}
     >
       <Box sx={{ pt: "100%", position: "relative" }}>
-        {product.status && renderStatus}
+        {food.status && renderStatus}
 
         {renderImg}
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link color="inherit" underline="hover" variant="subtitle2" noWrap>
-          {product.name}
+          {food.name}
         </Link>
 
         <Stack
@@ -84,8 +99,36 @@ export default function FoodCard({ product }: any) {
           alignItems="center"
           justifyContent="space-between"
         >
-          <ColorPreview colors={product.colors} />
           {renderPrice}
+          <Popover
+            id={food._id}
+            anchorEl={anchorEl}
+            open={open}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>
+              <EditOutlinedIcon />
+              Edit
+            </MenuItem>
+
+            <MenuItem
+              onClick={() => {
+                deleteFood(food._id), handleClose();
+              }}
+              sx={{ color: "error.main" }}
+            >
+              <DeleteForeverOutlinedIcon />
+              Delete
+            </MenuItem>
+          </Popover>
         </Stack>
       </Stack>
     </Card>

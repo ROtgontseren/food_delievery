@@ -30,7 +30,6 @@ const CategoryProvider = ({children}: PropsWithChildren) => {
     const getCategory = async () => {
         try {
           const data =await axios.get("http://localhost:8080/categories")
-          console.log("RES", data.data.allCategories);
           setCategories(data.data.allCategories);
         } catch (error: any) {
           console.log("Error" + error.message);

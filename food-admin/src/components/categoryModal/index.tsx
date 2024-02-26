@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 // import Image from "next/image";
 import { Remove, Add, Close } from "@mui/icons-material";
-import {Button} from "../components/core/button";
-import {Input} from "../components/core/input";
+import {Button} from "../core/button";
+import {Input} from "../core/input";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { CategoryContext } from "@/context/categoryContext";
 import { useContext } from "react";
