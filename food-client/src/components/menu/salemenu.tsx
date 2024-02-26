@@ -1,8 +1,16 @@
+"use client"
 import React from 'react';
-import { Container, Box,Typography} from '@mui/material';
+import { Container, Box,Typography,Grid} from '@mui/material';
 import Menucard from '../menucard';
+import {FoodContext} from '@/context/foodProvider';
+import { useContext,useEffect} from 'react';
 
 const salemenu = () => {
+   const { foods, getFoods} = useContext(FoodContext);
+   console.log("salemenu", foods)
+  useEffect(() => {
+    getFoods()
+  }, []);
   return (
    <Box>
       <Box sx={{display: "flex" ,justifyContent:"space-between", paddingX: "120px"}}>
@@ -16,10 +24,9 @@ const salemenu = () => {
           </Box>
       </Box> 
       <Box sx={{display:"flex", gap: "60px", paddingX:"120px",marginY:"60px"}}>
-          <Menucard/>
-          <Menucard/>
-          <Menucard/>
-          <Menucard/>
+        {foods?.map((food: any) => (
+            <Menucard food={food} />
+        ))}
       </Box>
       
    </Box>   
