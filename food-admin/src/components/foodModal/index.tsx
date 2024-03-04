@@ -61,7 +61,7 @@ export default function FoodModal({ handleCloseFilter, openFilter }: any) {
     createFood,
   } = React.useContext(foodContext);
   return (
-    <div>
+    <Box>
       <Modal
         open={openFilter}
         onClose={handleCloseFilter}
@@ -145,6 +145,6 @@ export default function FoodModal({ handleCloseFilter, openFilter }: any) {
           ></Button>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }

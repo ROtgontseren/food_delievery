@@ -6,10 +6,9 @@ import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from "next/link";
-import { Drawer} from "@mui/material";
-import Basket from "../basket";
+import BasketDrawer from "../basketDrawer";
 
-type Anchor = "top" | "left" | "bottom" | "right";
+
 
 const Header = () => { 
   const Search = styled('div')(({ theme }) => ({
@@ -52,38 +51,11 @@ const Header = () => {
       },
     },
   }));
-  const [state, setState] = React.useState({
-    right: false,
-  });
-
-  const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
-      setState({ ...state, [anchor]: open });
-    };
-
-  const list = (anchor: Anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 450 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-     <Basket/>
-    </Box>
-  );
+ 
   
   return (
-    <nav style={{ display: "flex", maxWidth: "100%", marginTop: 25, justifyContent: "space-between" }}>
-      <div style={{ display: "flex", marginLeft: "200px" }}>
+    <Box style={{ display: "flex", maxWidth: "100%", marginTop: 25, justifyContent: "space-between" }}>
+      <Box style={{ display: "flex", marginLeft: "200px" }}>
         <svg
           width="41"
           height="41"
@@ -106,7 +78,7 @@ const Header = () => {
         <Link href={"./menu"}><Button variant="text" color="secondary">Хоолны цэс</Button></Link>
 
         <Button variant="text" color="secondary">Хүргэлтийн бүс</Button>
-      </div>
+      </Box>
 
       <Box sx={{display:"flex", alignItems:"center",marginRight: "200px"}}>
           <Search sx={{border:"2px",borderColor:"black"}}>
@@ -120,21 +92,7 @@ const Header = () => {
           </Search>       
 
         <Box sx={{display:"flex", alignItems:"center"}}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
-               <path d="M21 7.48977H16.21L11.83 0.929766C11.64 0.649766 11.32 0.509766 11 0.509766C10.68 0.509766 10.36 0.649766 10.17 0.939766L5.79 7.48977H1C0.45 7.48977 0 7.93977 0 8.48977C0 8.57977 0.00999996 8.66977 0.04 8.75977L2.58 18.0298C2.81 18.8698 3.58 19.4898 4.5 19.4898H17.5C18.42 19.4898 19.19 18.8698 19.43 18.0298L21.97 8.75977L22 8.48977C22 7.93977 21.55 7.48977 21 7.48977ZM11 3.28977L13.8 7.48977H8.2L11 3.28977ZM17.5 17.4898L4.51 17.4998L2.31 9.48977H19.7L17.5 17.4898ZM11 11.4898C9.9 11.4898 9 12.3898 9 13.4898C9 14.5898 9.9 15.4898 11 15.4898C12.1 15.4898 13 14.5898 13 13.4898C13 12.3898 12.1 11.4898 11 11.4898Z" fill="black"/>
-            </svg>
-            {(["right"] as const).map((anchor) => (
-               <React.Fragment key={anchor}>
-                  <Button onClick={toggleDrawer(anchor, true)} color="secondary">{anchor}сагс</Button>
-                     <Drawer
-                          anchor={anchor}
-                          open={state[anchor]}
-                          onClose={toggleDrawer(anchor, false)}
-                          >
-                           {list(anchor)}
-                     </Drawer>
-                  </React.Fragment>
-                  ))}
+            <BasketDrawer/>  
         </Box>
         <Box sx={{display:"flex", alignItems:"center"}}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -143,8 +101,9 @@ const Header = () => {
             <Link href={"/login"}><Button variant="text" color="secondary">Нэвтрэх</Button></Link>
         </Box>
       </Box>
-    </nav>
+    </Box>
   );
 };
 
 export default Header;
+

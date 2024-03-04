@@ -16,6 +16,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 interface IInputProps {
   name?: string;
   label: string;
+  desc?: string;
   value: string;
   errorText?: string | undefined,
   showPassword?: boolean;
@@ -26,6 +27,7 @@ interface IInputProps {
 export const Input = ({
   name,
   label,
+  desc,
   errorText,
   value,
   showPassword = false,

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { Button, Typography, Container, Box, colors,Link } from "@mui/material";
+import dynamic from "next/dynamic";
 
 const Footer = () => {
   return (
@@ -77,13 +78,13 @@ const Footer = () => {
         </svg>
         </Box>
         </Box>
-        <div>
+        <Box>
           <Box sx={{color:"#ffffff"}}>© 2024 Pinecone Foods LLC </Box>
           <Box sx={{color:"#ffffff"}}>Зохиогчийн эрх хуулиар хамгаалагдсан.</Box>
-        </div>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default Footer;
+export default dynamic(()=> Promise.resolve(Footer),{ssr: false});

@@ -17,10 +17,7 @@ const mainmenu = () => {
        </Box>
     </Box> 
     <Box sx={{display:"flex", gap: "60px", paddingX:"120px",marginY:"60px"}}>
-          <Menucard/>
-          <Menucard/>
-          <Menucard/>
-          <Menucard/>
+          
       </Box>
    </Box>
   )

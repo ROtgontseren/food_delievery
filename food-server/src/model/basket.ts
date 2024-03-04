@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const schemaBasket = new Schema ({
     user:{
         type: Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
         required: true,
     },
     foods : [{

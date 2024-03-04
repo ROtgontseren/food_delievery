@@ -12,6 +12,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { bgBlur } from "@/theme/css";
 
 import Iconify from "@/components/iconify";
+import { Box } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
@@ -52,7 +53,7 @@ export default function Searchbar() {
 
   return (
     <ClickAwayListener onClickAway={handleClose}>
-      <div>
+      <Box>
         {!open && (
           <IconButton onClick={handleOpen}>
             <Iconify icon="eva:search-fill" />
@@ -81,7 +82,7 @@ export default function Searchbar() {
             </Button>
           </StyledSearchbar>
         </Slide>
-      </div>
+      </Box>
     </ClickAwayListener>
   );
 }

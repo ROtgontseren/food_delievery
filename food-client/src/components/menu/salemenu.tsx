@@ -7,7 +7,6 @@ import { useContext,useEffect} from 'react';
 
 const salemenu = () => {
    const { foods, getFoods} = useContext(FoodContext);
-   console.log("salemenu", foods)
   useEffect(() => {
     getFoods()
   }, []);
