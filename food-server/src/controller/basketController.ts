@@ -15,7 +15,8 @@ export const addBasket = async (
 
     // if (!findBasket) {
       const basket = await Basket.create({
-        user: req.user._id,
+        // user: req.user._id,
+        user: "",
         foods: [
           {
             food: req.body.foodId,

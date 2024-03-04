@@ -32,6 +32,7 @@ import foodRouter from "./router/foodRouter";
 import uploadRouter from "./router/uploadRouter";
 import errorHandler from "./middleware/errorHandler";
 import basketRouter from "./router/basketRouter";
+import orderRouter from "./router/orderRoutes"
 dotenv.config();
 
 const app: Application = express();
@@ -49,6 +50,7 @@ app.use("/categories",categoryRouter);
 app.use("/foods",foodRouter);
 app.use("/upload",uploadRouter);
 app.use("/basket",basketRouter);
+app.use("/oder",orderRouter)
 app.use(errorHandler)
 
 app.listen(PORT, ()=> console.log(color.rainbow("server aslaa")));

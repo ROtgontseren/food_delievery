@@ -7,6 +7,7 @@ import './scss/globals.scss'
 import { UserProvider } from '@/context/Userprovider';
 import  CategoryProvider  from '@/context/categoryProvider';
 import FoodProvider from '@/context/foodProvider';
+import BasketProvider from '@/context/basket';
 
 
 export default function RootLayout({
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body >
       <ThemeProvider>
       <FoodProvider>
+        <BasketProvider>
         <UserProvider>
           <CategoryProvider>
          <Header/>
@@ -27,6 +29,7 @@ export default function RootLayout({
          </CategoryProvider>
         {/* <ToastContainer /> */}
         </UserProvider>
+        </BasketProvider>
         </FoodProvider>
       </ThemeProvider>
       </body>

@@ -43,7 +43,7 @@ const BasketProvider = ({ children }: PropsWithChildren) => {
         const {
           data: { basket },
         } = await axios.get("http://localhost:8080/basket", {
-          headers: { Authorization: `Bearer ${token}` },
+          // headers: { Authorization: `Bearer ${token}` },
         });
         console.log("B", basket.foods);
         setBaskets(basket.foods);

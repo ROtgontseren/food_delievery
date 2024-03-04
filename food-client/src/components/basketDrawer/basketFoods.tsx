@@ -13,11 +13,11 @@ type Props = {
 };
 
 export const BasketFoods = ({ foods, handleDelete }: any) => {
-  // const { deleteBasket } = useContext(BasketContext);
+  const { deleteBasket } = useContext(BasketContext);
   return (
     <>
         <Grid container 
-        // key={food._id}
+        key={foods._id}
          p={2} py={6}>
           <Grid item xs={6}>
             <img
@@ -25,7 +25,7 @@ export const BasketFoods = ({ foods, handleDelete }: any) => {
               width={250}
               height={170}
               style={{}}
-              // src={food.food.image}
+              src={foods.image}
             />
           </Grid>
           <Grid item xs={6}>
@@ -44,7 +44,7 @@ export const BasketFoods = ({ foods, handleDelete }: any) => {
                 }}
               >
                 <Typography variant="h5" fontWeight={600} component="h2">
-                  {/* {food.food.name} */}
+                  {foods.name}
                 </Typography>
                 <Typography
                   variant="h6"
@@ -52,7 +52,7 @@ export const BasketFoods = ({ foods, handleDelete }: any) => {
                   py={2}
                   sx={{ color: "#18BA51" }}
                 >
-                  {/* {food.food.price}₮ */}
+                  {foods.price}₮
                 </Typography>
               </div>
               <MuiButton onClick={handleDelete}>

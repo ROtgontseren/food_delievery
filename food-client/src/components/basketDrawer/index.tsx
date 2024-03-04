@@ -29,17 +29,17 @@ export const BasketDrawer = () => {
   const { baskets, loading, deleteBasket } = useContext(BasketContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
-  // const changeOnclick = () => {
-  //   router.push("/order"), setIsDrawerOpen(false);
-  // };
+  const changeOnclick = () => {
+    router.push("/order"), setIsDrawerOpen(false);
+  };
 
-  // const sum = baskets.map(({ food }) => food.price).reduce((a, b) => a + b, 0);
+  const sum = baskets.map(({ food }) => food.price).reduce((a, b) => a + b, 0);
 
-  // const food = baskets.map(({ food }) => food);
+  const food = baskets.map(({ food }) => food);
 
-  // const handleDelete = () => {
-  //   deleteBasket(food);
-  // };
+  const handleDelete = () => {
+    deleteBasket(food);
+  };
 
   return (
     <>

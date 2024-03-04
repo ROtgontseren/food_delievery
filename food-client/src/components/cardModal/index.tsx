@@ -38,6 +38,7 @@ export default function CardModal({ handleClose, open, food }: ICardModal) {
 
   const HandleSendFood = () => {
     addBasket(food);
+    console.log("addbasket", food)
     handleClose();
   };
   const router = useRouter();
