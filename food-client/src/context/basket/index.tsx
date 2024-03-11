@@ -10,6 +10,7 @@ import React, {
 import { UserContext } from "../user";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 
 interface IBasket {
   food: {
@@ -25,7 +26,16 @@ interface IBasketContext {
   baskets: IBasket[];
   addBasket: (food: any) => Promise<void>;
   deleteBasket: (food: any) => Promise<void>;
-}
+};
+
+const createReq = async (url: string, food: any) => {
+  const { data } = (await axios.post(url, food, {
+    // headers: { Authorization: `Bearer ${token}` },
+  })) as {
+    data: any;
+  };
+  return { basket: data.basket, message: data.message };
+};
 
 export const BasketContext = createContext({} as IBasketContext);
 
@@ -58,20 +68,17 @@ const BasketProvider = ({ children }: PropsWithChildren) => {
   console.log("getallbaskets", baskets);
 
   const addBasket = async (food: any) => {
+    console.log("Foods", food);
     try {
-      setLoading(true);
-      if (user) {
-        const {
-          data: { basket },
-        } = await axios.put("http://localhost:8080/basket", {
-          userId: user._id,
-          foodId: food._id,
-          count: 2,
-        });
-        setLoading(false);
-      }
+      const { basket, message } = await createReq(
+        "http://localhost:8080/basket",
+        food
+      );
+      console.log("RES", basket);
+      setBaskets({ ...baskets });
+      toast.success(message);
     } catch (error: any) {
-      alert("Error" + error.message);
+      console.log("Error",error.message);
     }
   };
 

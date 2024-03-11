@@ -7,16 +7,15 @@ export const addBasket = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("User", req.user);
+  console.log("User", req.user._id);
   console.log("Body", req.body);
 
   try {
-    // const findBasket = await Basket.findOne({ user: req.user._id });
+    const findBasket = await Basket.findOne({ user: req.user._id });
 
-    // if (!findBasket) {
+    if (!findBasket) {
       const basket = await Basket.create({
-        // user: req.user._id,
-        user: "",
+        user: req.user._id,
         foods: [
           {
             food: req.body.foodId,
@@ -26,24 +25,25 @@ export const addBasket = async (
         totalPrice: req.body.totalPrice,
       });
       res.status(200).json({ message: "Сагсанд хоол амжилттай нэмлээ-1" });
-//     }  else {
-//       console.log("BFOODS", findBasket);
-//       const findIndex = findBasket.foods.findIndex(
-//         (el) => el.food === req.body.foodId
-//       );
-//       console.log("Find", findIndex);
-//       console.log("Foods", findBasket.foods);
+    }  else {
+      console.log("BFOODS", findBasket);
+      const findIndex = findBasket.foods.findIndex(
+        (el) => el.food === req.body.foodId
+      );
+      console.log("Find", findIndex);
+      console.log("Foods", findBasket.foods);
 
-//       if (findIndex !== -1) {
-//         findBasket.foods[findIndex].qty = Number(req.body.quantity);
-//         findBasket.totalPrice = Number(req.body.totalPrice);
-//       }
+      if (findIndex !== -1) {
+        findBasket.foods[findIndex].qty = Number(req.body.quantity);
+        findBasket.totalPrice = Number(req.body.totalPrice);
+      }
 
-//       console.log("ChangedFoods", findBasket.foods);
+      console.log("ChangedFoods", findBasket.foods);
 
-//       await findBasket.save();
-//       res.status(200).json({ message: "Сагсанд хоол амжилттай нэмлээ-2" });
-    // }
+      await findBasket.save();
+      res.status(200).json({ message: "Сагсанд хоол амжилттай нэмлээ-2" });
+    }
+    console.log("userId", req.user._id)
   } catch (error) {
     next(error);
   }

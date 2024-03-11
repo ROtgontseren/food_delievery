@@ -13,19 +13,21 @@ const validationSchema = yup.object({
       .max(100, "Имэйл хаяг 100 тэмдэгтээс хэтрэхгүй байна")
       .required("Имэйл хаягыг заавал бөглөнө үү")
       .email("")
-      .matches(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@gmail[A-Za-z0-9.-]+$/),
+      .matches(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@yahoo[A-Za-z0-9.-]+$/),
       password: yup.string()
       .required("нууц үгээ заавал бөглөнө үү")
       .min(6, "нууц үг хамгийн багадаа 6 тэмдэгт байна")
     })
 
 const LoginPage = () => {
-  const {user} = useContext(UserContext);
+  const {user,login} = useContext(UserContext);
   
   const formik = useFormik({
     onSubmit: ({email,password}) => {
       console.log("email",email),
-      console.log("password",password)},
+      console.log("password",password)
+      login(email, password)
+    },
     initialValues: {email: user.email, password: user.password},
     validateOnChange:false,
     validateOnBlur:false,
@@ -60,6 +62,7 @@ const LoginPage = () => {
                name="email" 
                value={formik.values.email}
                onChange={formik.handleChange}
+
                />
           <Input 
                label="Нууц үг" 
@@ -75,7 +78,7 @@ const LoginPage = () => {
         </Stack>
 
         <Stack flex="row" width="100%" justifyContent="flex-end">
-          <Button label="Нэвтрэх" onClick={formik.handleSubmit} />
+          <Button label="Нэвтрэх" onClick={formik.handleSubmit}/>
         </Stack>
         <Stack sx={{ my: "2rem" }}>
           <Typography>Эсвэл</Typography>
