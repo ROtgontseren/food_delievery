@@ -26,6 +26,7 @@ import userRouter from "./router/userRouter";
 import cors from "cors";
 // import "dotenv/config";
 import dotenv from "dotenv";
+import { Request,Response } from "express";
 import verifyRouter from "./router/verifyRouter";
 import categoryRouter from "./router/categoryRouter";
 import foodRouter from "./router/foodRouter";
@@ -43,15 +44,18 @@ connectDB(MONGO_URI);
 
 app.use(cors());
 app.use(express.json());
-app.use("/auth", authRouter);
+app.use("api/v1/auth", authRouter);
 app.use("/",userRouter);
 app.use("/verify",verifyRouter);
 app.use("/categories",categoryRouter);
 app.use("/foods",foodRouter);
 app.use("/upload",uploadRouter);
 app.use("/basket",basketRouter);
-app.use("/oder",orderRouter)
-app.use(errorHandler)
+app.use("/oder",orderRouter);
 
+app.get("/", (req:Request, res:Response)=> {
+    res.send("food delievery")
+})
+app.use(errorHandler)
 app.listen(PORT, ()=> console.log(color.rainbow("server aslaa")));
 
