@@ -30,3 +30,4 @@ const foodProvider = ({children}: PropsWithChildren) => {
 }
 
 export default foodProvider;
+
